@@ -6,5 +6,5 @@
 - C
 
 ### Feature 1
-Description:
-How to:
+Description: описание
+How to: инструкция
