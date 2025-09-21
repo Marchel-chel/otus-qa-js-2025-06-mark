@@ -1,0 +1,35 @@
+{
+  "name": "otus-qa",
+  "version": "1.0.0",
+  "description": "Первая строка",
+  "main": "index.js",
+  "dependencies": {
+    "import-local": "^3.2.0",
+    "jest": "^30.1.3",
+    "jest-cli": "^30.1.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:ci": "eslint .",
+    "lint": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marchel-chel/otus-qa-js-2025-06-mark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marchel-chel/otus-qa-js-2025-06-mark/issues"
+  },
+  "homepage": "https://github.com/Marchel-chel/otus-qa-js-2025-06-mark#readme"
+}
