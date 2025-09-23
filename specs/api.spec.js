@@ -25,9 +25,9 @@ describe('BookStore API: Account', () => {
     const user = baseUser()
     const res = await createUser(user)
 
-    expect(res.status).toBe(201)
     expect(res.data).toHaveProperty('userID')
     expect(res.data).toHaveProperty('username', user.userName)
+    expect(res.status).toBe(201)
   })
 
   test('Создание пользователя с ошибкой: логин уже используется', async () => {
@@ -36,16 +36,16 @@ describe('BookStore API: Account', () => {
     expect(first.status).toBe(201)
 
     const second = await createUser(user)
-    expect([400, 406]).toContain(second.status)
     expect(second.data).toHaveProperty('message')
+    expect(second.status).toBe(406)
   })
 
   test('Создание пользователя с ошибкой: пароль не подходит', async () => {
     const badUser = { userName: `user_${rand()}`, password: '12345678' }
     const res = await createUser(badUser)
 
-    expect([400, 406]).toContain(res.status)
     expect(res.data).toHaveProperty('message')
+    expect(res.status).toBe(400)
   })
 
   test('Генерация токена с ошибкой (неверный пароль)', async () => {
@@ -56,9 +56,8 @@ describe('BookStore API: Account', () => {
     const wrong = { ...user, password: 'Wrong1!' }
     const res = await generateToken(wrong)
 
-    expect(res.status).toBe(200)
-    expect(res.data).toHaveProperty('status')
     expect(res.data.status).toMatch(/Failed/i)
+    expect(res.status).toBe(200)
   })
 
   test('Генерация токена успешно', async () => {
