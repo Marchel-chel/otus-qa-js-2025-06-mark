@@ -39,4 +39,19 @@ export const getTotal = (items = [], discount = 0) => {
   return total * (1 - discount / 100)
 }
 
-export default { nameIsValid, fullTrim, getTotal }
+/**
+ * Подсчёт суммы всех баллов
+ *
+ * @param {{[key: string]: number}} scores
+ * @returns {number}
+ * @example getScore({ Anna: 10, Olga: 1, Ivan: 5 }) // 16
+ */
+export const getScore = (scores = {}) => {
+  let total = 0
+  for (const key in scores) {
+    total += scores[key]
+  }
+  return total
+}
+
+export default { nameIsValid, fullTrim, getTotal, getScore }
