@@ -4,7 +4,7 @@ import { validUser } from '../framework/fixtures/user.js'
 import { pickTwoIsbns } from '../framework/fixtures/book.js'
 
 describe('BookStore: Books API via services', () => {
-  let user, userId, token, isbn1, isbn2
+  let user, userId: any, token: any, isbn1: any, isbn2: any
 
   beforeAll(async () => {
     user = validUser()

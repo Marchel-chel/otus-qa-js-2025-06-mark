@@ -3,7 +3,7 @@
  * @param {string} name
  * @returns {boolean}
  */
-export const nameIsValid = name => typeof name === 'string' && name.length >= 2 && /^[a-z]+$/i.test(name)
+export const nameIsValid = (name: any) => typeof name === 'string' && name.length >= 2 && /^[a-z]+$/i.test(name)
 
 /**
  * Удаление пробелов из строки
@@ -11,7 +11,7 @@ export const nameIsValid = name => typeof name === 'string' && name.length >= 2 
  * @param {string} text
  * @returns {string}
  */
-export const fullTrim = text => (text ?? '').replace(/\s+/g, '')
+export const fullTrim = (text: any) => (text ?? '').replace(/\s+/g, '')
 
 /**
  * Подсчёт суммы заказа
@@ -49,6 +49,7 @@ export const getTotal = (items = [], discount = 0) => {
 export const getScore = (scores = {}) => {
   let total = 0
   for (const key in scores) {
+    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     total += scores[key]
   }
   return total
