@@ -1,0 +1,16 @@
+# папки/файлы, которые не нужны в образе
+node_modules
+coverage
+reports
+allure-results
+allure-report
+dist
+.build
+.tmp
+
+# служебное
+.git
+.gitignore
+.dockerignore
+.vscode
+.idea
