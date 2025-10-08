@@ -1,4 +1,4 @@
-function kolobok(name) {
+function kolobok(name: any) {
   switch (name) {
     case 'дедушка':
       return 'Я от дедушки ушёл'
@@ -11,7 +11,7 @@ function kolobok(name) {
 
 console.log(kolobok('дедушка'))
 
-function newYear(name) {
+function newYear(name: any) {
   if (name === 'Дед Мороз' || name === 'Снегурочка') {
     return `${name}! ${name}! ${name}!`
   }
