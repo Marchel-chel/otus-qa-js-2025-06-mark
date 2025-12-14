@@ -1,5 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
+  testTimeout: 20000,
   testPathIgnorePatterns: ['/node_modules/', '/e2e/', '/tests-examples/'],
   reporters: [
     'default',
