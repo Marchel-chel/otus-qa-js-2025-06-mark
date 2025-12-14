@@ -1,4 +1,4 @@
-import { nameIsValid, fullTrim, getTotal } from '../src/app'
+import { nameIsValid, fullTrim, getTotal } from '../src/app.js'
 
 describe('nameIsValid', () => {
   test('валидные имена', () => {
@@ -32,10 +32,12 @@ describe('getTotal', () => {
   ]
 
   test('подсчитывает сумму без скидки', () => {
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(getTotal(items)).toBe(200)
   })
 
   test('подсчитывает сумму со скидкой', () => {
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(getTotal(items, 10)).toBe(180)
   })
 
@@ -44,12 +46,16 @@ describe('getTotal', () => {
     [[{ price: 10, quantity: 2 }], 0, 20],
     [[{ price: 10, quantity: 1 }], 50, 5]
   ])('параметризованный тест: %o с %d%% = %d', (items, discount, expected) => {
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(getTotal(items, discount)).toBe(expected)
   })
 
   test('ошибка при некорректной скидке', () => {
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(() => getTotal(items, 200)).toThrow()
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(() => getTotal(items, -1)).toThrow()
+    // @ts-expect-error TS(2345): Argument of type '{ price: number; quantity: numbe... Remove this comment to see the full error message
     expect(() => getTotal(items, '10')).toThrow()
   })
 })
