@@ -8,7 +8,8 @@ module.exports = {
         pageTitle: 'Test Report',
         outputPath: 'reports/jest-report.html',
         includeFailureMsg: true,
-        includeConsoleLog: true
+        includeConsoleLog: true,
+        theme: 'lightTheme'
       }
     ]
   ]
