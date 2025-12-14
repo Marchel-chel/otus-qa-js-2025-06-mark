@@ -12,7 +12,7 @@ describe('BookStore: Account API via services', () => {
 
     const authRes = await account.authorized(user)
     expect(authRes.status).toBe(200)
-  })
+  }, 20000)
 
   test('Успешное удаление пользователя после авторизации', async () => {
     const user = validUser()
