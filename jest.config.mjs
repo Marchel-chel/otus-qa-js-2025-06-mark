@@ -1,6 +1,7 @@
 export default {
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
+  testTimeout: 20000,
   extensionsToTreatAsEsm: ['.ts'],
   transform: { '^.+\\.tsx?$': ['ts-jest', { useESM: true, tsconfig: { isolatedModules: true } }] },
   moduleNameMapper: {

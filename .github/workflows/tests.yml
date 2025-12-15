@@ -1,0 +1,66 @@
+name: Run Jest Tests and Deploy Report
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Jest tests (generate HTML report)
+        run: npm test
+
+      - name: Upload Jest HTML report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jest-html-report
+          path: reports/jest-report.html
+
+      - name: Configure git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy report to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: npm run deploy:report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Telegram (Success)
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ✅ Тесты прошли успешно!
+            📄 HTML-отчёт опубликован на GitHub Pages
+            🔗 https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            🌿 Ветка: ${{ github.ref_name }}
+            💬 Коммит: ${{ github.event.head_commit.message }}
+
+      - name: Notify Telegram (Failure)
+        if: failure()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ❌ Тесты упали!
+            🔗 Логи: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            🌿 Ветка: ${{ github.ref_name }}
+            💬 Коммит: ${{ github.event.head_commit.message }}
