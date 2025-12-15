@@ -12,11 +12,11 @@ const baseUser = () => ({
   password: `Qwerty1!${rand()}`
 })
 
-async function createUser(user) {
+async function createUser(user: any) {
   return api.post('/Account/v1/User', user)
 }
 
-async function generateToken(user) {
+async function generateToken(user: any) {
   return api.post('/Account/v1/GenerateToken', user)
 }
 

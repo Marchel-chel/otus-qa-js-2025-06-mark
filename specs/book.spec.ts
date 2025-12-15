@@ -4,8 +4,9 @@ import { validUser } from '../framework/fixtures/user.js'
 import { pickTwoIsbns } from '../framework/fixtures/book.js'
 
 describe('BookStore: Books API via services', () => {
-  let user, userId, token, isbn1, isbn2
+  let user, userId: any, token: any, isbn1: any, isbn2: any
 
+  /* eslint-disable jest/no-standalone-expect */
   beforeAll(async () => {
     user = validUser()
     const created = await account.createUser(user)
@@ -17,6 +18,7 @@ describe('BookStore: Books API via services', () => {
     token = tokenRes.data.token
     ;[isbn1, isbn2] = await pickTwoIsbns()
   })
+  /* eslint-enable jest/no-standalone-expect */
 
   test('Создание книги (добавление пользователю)', async () => {
     const add = await books.createBook(userId, token, [isbn1])
