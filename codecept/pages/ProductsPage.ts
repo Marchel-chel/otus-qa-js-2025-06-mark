@@ -1,6 +1,6 @@
 export class ProductsPage {
   seePage(I: CodeceptJS.I) {
-    I.see('All Products')
+    I.see('ALL PRODUCTS')
   }
 
   search(I: CodeceptJS.I, text: string) {
@@ -9,7 +9,7 @@ export class ProductsPage {
   }
 
   seeSearchedProducts(I: CodeceptJS.I) {
-    I.see('Searched Products')
+    I.see('SEARCHED PRODUCTS')
   }
 
   openFirstProduct(I: CodeceptJS.I) {

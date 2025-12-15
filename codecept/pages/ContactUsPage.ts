@@ -1,6 +1,6 @@
 export class ContactUsPage {
   seePage(I: CodeceptJS.I) {
-    I.see('Get In Touch')
+    I.see('GET IN TOUCH')
   }
 
   fillForm(I: CodeceptJS.I, name: string, email: string, subject: string, message: string) {
