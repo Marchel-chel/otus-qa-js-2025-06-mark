@@ -12,6 +12,6 @@
     "types": ["node", "jest", "@playwright/test"],
     "isolatedModules": true
   },
-  "include": ["src/**/*", "specs/**/*", "tests/**/*", "framework/**/*", "**/*.js"],
+  "include": ["src/**/*", "specs/**/*", "tests/**/*", "framework/**/*", "**/*.js", "codecept/**/*.ts"],
   "exclude": ["node_modules", "allure-results", "allure-report", "reports", "dist"]
 }
